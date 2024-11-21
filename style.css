@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right top, #8dd62b, #640577);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 15px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 827px;
+  height: 600px;
+  padding: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+#list-header {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+.blankDiv {
+  background-color: #fff;
+  border: none;
+  padding: 20px;
+  border-radius: 8px;
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#addNotesDiv {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+#addNotesDiv i {
+  font-size: 3.8rem;
+  color: #dcdcd9;
+}
+
+#addNotesDiv:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  background-color: #f0f8ff;
+}
+
+#list-container {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+li {
+  list-style: none;
+  margin: 10px;
+  padding: 15px;
+  width: 350px;
+  height: 250px;
+  background-color: #fffa87;
+  color: #333;
+  border: 1px solid #e6e600;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
+  transform: rotate(-2deg);
+  overflow-y: scroll;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: "Sour Gummy", sans-serif;
+}
+
+li:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.5);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+li span {
+  font-size: 16px;
+  font-weight: 500;
+  flex-grow: 1;
+  word-wrap: break-word;
+  overflow-y: scroll;
+}
+
+#editBtn,
+#deleteBtn {
+  background-color: #c6aaff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px; /* Adjusted margin for spacing */
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 60px;
+}
+
+#noteBtns-container {
+  display: flex; /* To align buttons in a row */
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  height: 50%;
+}
+
+#editBtn {
+  background-color: gainsboro;
+}
+
+#deleteBtn:hover {
+  background-color: #8c53ff;
+}
+
+#editBtn:hover {
+  background-color: gray;
+}
+
+/* Create Note Popup CSS */
+#popupContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: "Sour Gummy", sans-serif;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  background-color: rgba(245, 245, 220, 0.747);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35); /* A strong shadow for floating effect */
+  border-radius: 16px; /* Smooth rounded corners */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333; /* Neutral text color for contrast */
+  animation: popupEnter 0.5s ease-out; /* Add a nice entrance animation */
+}
+#popupContainer h1 {
+  font-family: "Sour Gummy", sans-serif;
+  font-weight: 800;
+}
+
+/* Optional animation for the popup */
+@keyframes popupEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translate(-50%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
+#popupContainer button {
+  background-color: #4caf50; /* Solid color for simplicity */
+  border: none;
+  color: white;
+  padding: 5px 25px;
+  border-radius: 8px; /* Slightly rounded corners */
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: "Sour Gummy", sans-serif;
+  font-weight: 600;
+}
+
+textarea {
+  width: 300px;
+  height: 200px;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 2px solid #8c53ff;
+  resize: none;
+  font-size: 14px;
+}
+
+#btn-container {
+  display: flex;
+}
+
+#submitBtn,
+#closeBtn {
+  width: 100px;
+  background-color: #8c53ff;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#closeBtn {
+  background-color: gainsboro;
+}
+
+/* Editing Popup CSS */
+#editing-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: "Sour Gummy", sans-serif;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  background-color: rgba(245, 245, 220, 0.747);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35); /* A strong shadow for floating effect */
+  border-radius: 16px; /* Smooth rounded corners */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333; /* Neutral text color for contrast */
+  animation: popupEnter 0.5s ease-out; /* Add a nice entrance animation */
+}
+
+#editing-container h1 {
+  font-family: "Sour Gummy", sans-serif;
+  font-weight: 800;
+}
+
+#submitBtn,
+#closeBtn {
+  width: 100px;
+  background-color: #8c53ff;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+#closeBtn {
+  background-color: gainsboro;
+}
