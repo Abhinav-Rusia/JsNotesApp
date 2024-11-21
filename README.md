@@ -1,0 +1,1 @@
+I made a modern-looking Notes app using HTML, CSS, and Vanilla JavaScript. While working on it, I learned about Local Storage and how to use it to save notes. I also added features to edit and delete notes, making the app more useful. To make it look better, I styled the notes UI to look like colorful sticky notes, giving the app a fun and creative feel.
